@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://2vp4v72pnfsf"]
+
+[ext_resource type="Texture2D" uid="uid://btkpyoeievh0c" path="res://Art/Player/Player_Walking.webp" id="1_4flbx"]
+
+[node name="Player" type="CharacterBody2D" unique_id=855570928]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=245173234]
+texture_filter = 1
+texture = ExtResource("1_4flbx")
+hframes = 4
+vframes = 8
+
+[node name="Player_Animation" type="AnimationPlayer" parent="." unique_id=1300274814]
