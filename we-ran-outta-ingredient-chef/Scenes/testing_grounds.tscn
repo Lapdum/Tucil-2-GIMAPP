@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ff5hkmowdesh"]
+
+[ext_resource type="PackedScene" uid="uid://2vp4v72pnfsf" path="res://Scenes/player.tscn" id="1_dcuqf"]
+[ext_resource type="PackedScene" uid="uid://ciyseml4705vq" path="res://Scenes/enemy_base.tscn" id="2_abtgi"]
+
+[node name="testing_grounds" type="Node2D" unique_id=101160268]
+
+[node name="Player" parent="." unique_id=855570928 instance=ExtResource("1_dcuqf")]
+position = Vector2(190, 184)
+
+[node name="Enemy_base" parent="." unique_id=391764609 instance=ExtResource("2_abtgi")]
+position = Vector2(866, 385)
+speed = 100.0
