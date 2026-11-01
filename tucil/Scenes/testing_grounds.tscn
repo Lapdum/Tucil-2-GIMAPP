@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://2vp4v72pnfsf" path="res://Scenes/player.tscn" id="1_dcuqf"]
 [ext_resource type="PackedScene" uid="uid://ciyseml4705vq" path="res://Scenes/enemy_base.tscn" id="2_abtgi"]
 [ext_resource type="Texture2D" uid="uid://c7xcl7xuhpk7r" path="res://Art/Tilemap/New Basic Tiles Free.png" id="3_abtgi"]
+[ext_resource type="Script" uid="uid://dmr7nsa8kk880" path="res://Code/VisionCone.gd" id="3_w34uy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w34uy"]
 texture = ExtResource("3_abtgi")
@@ -133,16 +134,39 @@ texture = ExtResource("3_abtgi")
 [sub_resource type="TileSet" id="TileSet_dcuqf"]
 sources/0 = SubResource("TileSetAtlasSource_w34uy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp5od"]
+size = Vector2(65.5, 324)
+
 [node name="testing_grounds" type="Node2D" unique_id=101160268]
 
 [node name="Player" parent="." unique_id=855570928 instance=ExtResource("1_dcuqf")]
 position = Vector2(190, 184)
 
-[node name="Enemy_base" parent="." unique_id=391764609 instance=ExtResource("2_abtgi")]
-position = Vector2(866, 385)
+[node name="Enemy_base" parent="." unique_id=391764609 node_paths=PackedStringArray("los_ray", "vision_cone") instance=ExtResource("2_abtgi")]
+position = Vector2(875, 270)
+los_ray = NodePath("RayCast2D2")
+vision_cone = NodePath("VisionCone")
 speed = 100.0
+
+[node name="RayCast2D2" type="RayCast2D" parent="Enemy_base" unique_id=985698633]
+
+[node name="VisionCone" type="Node2D" parent="Enemy_base" unique_id=14870217]
+script = ExtResource("3_w34uy")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1977581974]
 tile_set = SubResource("TileSet_dcuqf")
 rendering_quadrant_size = 32
 format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=906361608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2093363052]
+position = Vector2(506, 314)
+shape = SubResource("RectangleShape2D_wp5od")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1086996654]
+offset_left = 474.0
+offset_top = 153.0
+offset_right = 540.0
+offset_bottom = 494.0
+color = Color(0.48527002, 0.44092715, 0.31124985, 1)
