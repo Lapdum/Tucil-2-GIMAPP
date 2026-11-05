@@ -2,7 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://b5g4vgojkt7ji" path="res://TucilTileset.tres" id="1_csw5h"]
 [ext_resource type="PackedScene" uid="uid://2vp4v72pnfsf" path="res://Scenes/player.tscn" id="2_l7un5"]
+[ext_resource type="PackedScene" uid="uid://bt4oincvew3y0" path="res://Code/main_menu.tscn" id="3_cjcjx"]
 [ext_resource type="PackedScene" uid="uid://ciyseml4705vq" path="res://Scenes/enemy_base.tscn" id="3_xf1hd"]
+[ext_resource type="Script" uid="uid://i3axe3polpe1" path="res://Scenes/exit.gd" id="4_cjcjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2coc"]
 size = Vector2(384, 256)
@@ -12,6 +14,9 @@ size = Vector2(4302, 1008)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xar2f"]
 size = Vector2(872, 3294)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf1hd"]
+size = Vector2(32, 47)
 
 [node name="OutsideWorld" type="Node2D" unique_id=1907995009]
 y_sort_enabled = true
@@ -50,6 +55,26 @@ tile_set = ExtResource("1_csw5h")
 [node name="Player" parent="." unique_id=855570928 instance=ExtResource("2_l7un5")]
 position = Vector2(-547, 37)
 speed = 100.0
+
+[node name="Main Menu" parent="Player" unique_id=2145884421 instance=ExtResource("3_cjcjx")]
+visible = false
+z_index = 101
+offset_left = -240.0
+offset_top = -139.0
+offset_right = -240.0
+offset_bottom = -139.0
+
+[node name="Music" parent="Player/Main Menu/Settings" parent_id_path=PackedInt32Array(2145884421, 1484984721) index="4" unique_id=1984986115]
+offset_left = 111.0
+offset_top = 102.0
+offset_right = 414.0
+offset_bottom = 118.0
+
+[node name="SFX" parent="Player/Main Menu/Settings" parent_id_path=PackedInt32Array(2145884421, 1484984721) index="5" unique_id=854108264]
+offset_left = 114.0
+offset_top = 141.0
+offset_right = 417.0
+offset_bottom = 157.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1831836513]
 
@@ -115,20 +140,16 @@ position = Vector2(167, 483)
 [node name="Enemy_base7" parent="Enemies" unique_id=478955726 instance=ExtResource("3_xf1hd")]
 position = Vector2(631, 733)
 
-[node name="Enemy_base8" parent="Enemies" unique_id=1030252501 instance=ExtResource("3_xf1hd")]
-position = Vector2(728, 469)
+[node name="Enter" type="Area2D" parent="." unique_id=344226165]
+collision_layer = 2
+script = ExtResource("4_cjcjx")
+target_scene = "uid://d1n1ces6hjl3w"
 
-[node name="Enemy_base9" parent="Enemies" unique_id=1663757947 instance=ExtResource("3_xf1hd")]
-position = Vector2(647, -40)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter" unique_id=1059514459]
+position = Vector2(-547, -6.5)
+shape = SubResource("RectangleShape2D_xf1hd")
 
-[node name="Enemy_base10" parent="Enemies" unique_id=455149494 instance=ExtResource("3_xf1hd")]
-position = Vector2(-223, -449)
+[connection signal="body_entered" from="Enter" to="Enter" method="_on_body_entered"]
 
-[node name="Enemy_base11" parent="Enemies" unique_id=412109798 instance=ExtResource("3_xf1hd")]
-position = Vector2(-1563, 760)
-
-[node name="Enemy_base12" parent="Enemies" unique_id=629680081 instance=ExtResource("3_xf1hd")]
-position = Vector2(-1574, -586)
-
-[node name="Enemy_base13" parent="Enemies" unique_id=852333280 instance=ExtResource("3_xf1hd")]
-position = Vector2(-1502, -753)
+[editable path="Player/Main Menu"]
+[editable path="Player/Main Menu/Settings"]

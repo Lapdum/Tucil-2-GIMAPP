@@ -2,6 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://b5g4vgojkt7ji" path="res://TucilTileset.tres" id="1_ngq68"]
 [ext_resource type="PackedScene" uid="uid://2vp4v72pnfsf" path="res://Scenes/player.tscn" id="1_u42cf"]
+[ext_resource type="Script" uid="uid://i3axe3polpe1" path="res://Scenes/exit.gd" id="3_kx3st"]
+[ext_resource type="PackedScene" uid="uid://bt4oincvew3y0" path="res://Code/main_menu.tscn" id="4_kx3st"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2coc"]
 size = Vector2(27, 41)
@@ -42,11 +44,27 @@ size = Vector2(204, 53)
 [node name="IndoorHouse" type="Node2D" unique_id=1541240284]
 y_sort_enabled = true
 
+[node name="Main Menu" parent="." unique_id=2145884421 instance=ExtResource("4_kx3st")]
+z_index = 101
+
+[node name="Music" parent="Main Menu/Settings" parent_id_path=PackedInt32Array(2145884421, 1484984721) index="4" unique_id=1984986115]
+offset_left = 111.0
+offset_top = 102.0
+offset_right = 414.0
+offset_bottom = 118.0
+
+[node name="SFX" parent="Main Menu/Settings" parent_id_path=PackedInt32Array(2145884421, 1484984721) index="5" unique_id=854108264]
+offset_left = 114.0
+offset_top = 141.0
+offset_right = 417.0
+offset_bottom = 157.0
+
 [node name="TheVoid" type="ColorRect" parent="." unique_id=1147619066]
 offset_left = -1.0
-offset_top = 5.0
 offset_right = 479.0
-offset_bottom = 277.0
+offset_bottom = 272.0
+scale = Vector2(1.2824115, 1.5188129)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Tiles" type="Node2D" parent="." unique_id=675880667]
@@ -86,8 +104,7 @@ tile_map_data = PackedByteArray("AAAKAAEAAgATABUAAAAOAAIAAgARABQAAAAOAAEAAgARABM
 tile_set = ExtResource("1_ngq68")
 
 [node name="Player" parent="." unique_id=855570928 instance=ExtResource("1_u42cf")]
-y_sort_enabled = true
-position = Vector2(207, 171)
+position = Vector2(240, 200)
 collision_mask = 6
 speed = 75.0
 
@@ -175,8 +192,15 @@ position = Vector2(413, 135)
 shape = SubResource("RectangleShape2D_fvjry")
 
 [node name="Exit" type="Area2D" parent="." unique_id=1190665418]
+script = ExtResource("3_kx3st")
+target_scene = "uid://dcpqcm1qcigpe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=340413699]
 top_level = true
 position = Vector2(240, 250.5)
 shape = SubResource("RectangleShape2D_2ipso")
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+
+[editable path="Main Menu"]
+[editable path="Main Menu/Settings"]

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bt4oincvew3y0"]
+
+[ext_resource type="Script" uid="uid://bvsqdxeobgohy" path="res://Code/main_menu.gd" id="1_thdcy"]
+[ext_resource type="Shader" uid="uid://75dw83wj0ows" path="res://blur.gdshader" id="1_yueuk"]
+[ext_resource type="FontFile" uid="uid://b5j2i734f5cla" path="res://Font/Kenney Future.ttf" id="3_scghd"]
+[ext_resource type="PackedScene" uid="uid://bfjogq4b8fy4a" path="res://Code/settings.tscn" id="4_iea2a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2coc"]
+shader = ExtResource("1_yueuk")
+shader_parameter/blur = 2.0
+shader_parameter/tint = Color(0, 0, 0, 0.2)
+
+[node name="Main Menu" type="Control" unique_id=2145884421]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thdcy")
+
+[node name="Menu" type="Control" parent="." unique_id=703624880]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Menu" unique_id=1681011621]
+material = SubResource("ShaderMaterial_v2coc")
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 277.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Menu" unique_id=1542430842]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 44.0
+offset_right = 373.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("3_scghd")
+text = "Tucilnya udah ke submit"
+
+[node name="Start" type="Button" parent="Menu" unique_id=1656336912]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 100.0
+offset_right = 299.0
+offset_bottom = 131.0
+text = "Play"
+
+[node name="Settings" type="Button" parent="Menu" unique_id=1688870012]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 144.0
+offset_right = 299.0
+offset_bottom = 175.0
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Menu" unique_id=1805056621]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 191.0
+offset_right = 299.0
+offset_bottom = 222.0
+text = "Quit"
+
+[node name="Settings" parent="." unique_id=1484984721 instance=ExtResource("4_iea2a")]
+layout_mode = 1
+
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
+
+[editable path="Settings"]

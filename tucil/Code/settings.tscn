@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bfjogq4b8fy4a"]
+
+[ext_resource type="Script" uid="uid://bvm8vxd0gpwu8" path="res://Code/settings.gd" id="1_3o2fh"]
+[ext_resource type="Shader" uid="uid://75dw83wj0ows" path="res://blur.gdshader" id="1_8yx7o"]
+[ext_resource type="FontFile" uid="uid://b5j2i734f5cla" path="res://Font/Kenney Future.ttf" id="2_3o2fh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uppr"]
+shader = ExtResource("1_8yx7o")
+shader_parameter/blur = 2.0
+shader_parameter/tint = Color(0, 0, 0, 0.2)
+
+[node name="Settings" type="Control" unique_id=1484984721]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3o2fh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1484612861]
+material = SubResource("ShaderMaterial_0uppr")
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 277.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=2053817140]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 45.0
+offset_right = 295.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("2_3o2fh")
+text = "Settings"
+
+[node name="Label2" type="Label" parent="." unique_id=1485894118]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 105.0
+offset_right = 164.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("2_3o2fh")
+theme_override_font_sizes/font_size = 8
+text = "Music"
+
+[node name="Label3" type="Label" parent="." unique_id=1806686977]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 141.0
+offset_right = 164.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_3o2fh")
+theme_override_font_sizes/font_size = 8
+text = "SFX
+"
+
+[node name="Music" type="HSlider" parent="." unique_id=1984986115]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21400002
+anchor_top = 0.39600003
+anchor_right = 0.21400002
+anchor_bottom = 0.39600003
+offset_left = 26.279991
+offset_top = -4.920006
+offset_right = 329.28
+offset_bottom = 11.079994
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFX" type="HSlider" parent="." unique_id=854108264]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21400002
+anchor_top = 0.39600003
+anchor_right = 0.21400002
+anchor_bottom = 0.39600003
+offset_left = 26.279991
+offset_top = 30.079994
+offset_right = 329.28
+offset_bottom = 46.079994
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Back" type="Button" parent="." unique_id=1570734461]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 196.0
+offset_right = 292.0
+offset_bottom = 227.0
+text = "Back"
+
+[connection signal="value_changed" from="Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
