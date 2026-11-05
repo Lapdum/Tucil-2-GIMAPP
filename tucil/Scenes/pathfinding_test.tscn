@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://2pwoflb30jwo"]
+
+[ext_resource type="PackedScene" uid="uid://2vp4v72pnfsf" path="res://Scenes/player.tscn" id="1_y0vn5"]
+[ext_resource type="PackedScene" uid="uid://ciyseml4705vq" path="res://Scenes/enemy_base.tscn" id="2_10u0x"]
+[ext_resource type="Texture2D" uid="uid://c7xcl7xuhpk7r" path="res://Art/Tilemap/New Basic Tiles Free.png" id="3_wpnuc"]
+[ext_resource type="Script" uid="uid://wat4nq8mfecn" path="res://Code/Pathfinder.gd" id="4_10u0x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w34uy"]
+texture = ExtResource("3_wpnuc")
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0/custom_data_0 = true
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:5/0/custom_data_0 = true
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:5/0/custom_data_0 = true
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:5/0/custom_data_0 = true
+9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:5/0/custom_data_0 = true
+10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:5/0/custom_data_0 = true
+11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:5/0/custom_data_0 = true
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dcuqf"]
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "solid"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_w34uy")
+
+[node name="testing_grounds" type="Node2D" unique_id=101160268]
+
+[node name="Player" parent="." unique_id=855570928 instance=ExtResource("1_y0vn5")]
+position = Vector2(190, 184)
+
+[node name="Enemy_base" parent="." unique_id=391764609 instance=ExtResource("2_10u0x")]
+position = Vector2(866, 385)
+speed = 100.0
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1977581974]
+tile_set = SubResource("TileSet_dcuqf")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(524316, 720896, 5, 589852, 720896, 5, 655388, 720896, 5, 720924, 720896, 5, 786460, 720896, 5, 851996, 720896, 5, 917532, 720896, 5, 983068, 720896, 5, 1048604, 720896, 5, 1114140, 720896, 5, 1179676, 720896, 5, 1245212, 720896, 5, 1310748, 720896, 5, 1376284, 720896, 5, 1441820, 720896, 5, 1507356, 720896, 5, 1572892, 720896, 5, 1638428, 720896, 5, 65564, 720896, 5, 131100, 720896, 5, 196636, 720896, 5, 262172, 720896, 5, 327708, 720896, 5, 393244, 720896, 5, 458780, 720896, 5, 2621468, 720896, 5, 2687004, 720896, 5, 2752540, 720896, 5, 1703964, 720896, 5, 1769500, 720896, 5, 1835036, 720896, 5, 1900572, 720896, 5, 1966108, 720896, 5)
+
+[node name="PathFinder" type="Node2D" parent="." unique_id=1694495984 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("4_10u0x")
+tilemap = NodePath("../TileMap")
+manual_bounds = Rect2i(0, 0, 100, 60)
+debug_draw = true
