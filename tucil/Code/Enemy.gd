@@ -6,26 +6,36 @@ extends Entity
 @export var attack_cooldown: float = 0.5
 @export var lose_target_time : float = 3.0
 
+@export_group("Pathfinding")
+@export var path_refresh_interval: float = 0.35 
+@export var waypoint_tolerance: float = 6.0 
 var target: Player = null
 var player_in_range: bool = false
 var cooldown_left: float = 0.0
 var player_in_sight: bool = false
 var lose_timer: float = 0.0
+var pathfinder: Pathfinder = null
+var _path: PackedVector2Array = PackedVector2Array()
+var _path_index: int = 0
+var _repath_timer: float = 0.0
 
 
 func _ready() -> void:
 	super()
+	pathfinder = get_tree().get_first_node_in_group(&"pathfinder") as Pathfinder
 
 func _physics_process(delta: float) -> void:
 	cooldown_left = max(cooldown_left - delta, 0.0)
 
 	if target and not is_instance_valid(target):
 		target = null
+		_clear_path() 
 
 	if target and not player_in_sight:
 		lose_timer -= delta
 		if lose_timer <= 0.0:
 			target = null
+			_clear_path() 
 
 	if is_attacking:
 		velocity = Vector2.ZERO
@@ -37,7 +47,7 @@ func _physics_process(delta: float) -> void:
 			face(direction_to_target())
 			play_idle()
 	elif target:
-		var dir := direction_to_target()
+		var dir := get_chase_direction(delta)
 		face(dir)
 		play_walk()
 		velocity = dir * speed
@@ -51,16 +61,37 @@ func _physics_process(delta: float) -> void:
 func direction_to_target() -> Vector2:
 	return (target.global_position - global_position).normalized()
 
+func get_chase_direction(delta: float) -> Vector2:
+	if pathfinder == null:
+		return direction_to_target()
+
+	_repath_timer -= delta
+	if _repath_timer <= 0.0:
+		_repath_timer = path_refresh_interval
+		_path = pathfinder.find_path(global_position, target.global_position)
+		_path_index = 0
+
+	while _path_index < _path.size() \
+			and global_position.distance_to(_path[_path_index]) <= waypoint_tolerance:
+		_path_index += 1
+
+	if _path_index >= _path.size():
+		return direction_to_target()
+
+	return (_path[_path_index] - global_position).normalized()
+
+
+func _clear_path() -> void:
+	_path = PackedVector2Array()
+	_path_index = 0
+	_repath_timer = 0.0
+
+
 func _on_animation_finished(anim_name: StringName) -> void:
 	var was_attacking := is_attacking
 	super(anim_name)
 	if was_attacking and not is_attacking:
 		cooldown_left = attack_cooldown
-
-
-#-----------------------------------------------
-# DETECTION
-#-----------------------------------------------
 
 func _on_sight_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -80,7 +111,7 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 
 
 func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
-	pass # Replace with function body.
+	pass 
 
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
