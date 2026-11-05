@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7xcl7xuhpk7r"
-path="res://.godot/imported/New Basic Tiles Free.png-fb689cf9249c2a33d6d70431a657bfe6.ctex"
+uid="uid://dcefh6e2tbyo3"
+path="res://.godot/imported/DungeonEnv.webp-151c1baa434c135576de608ac83c4d15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tilemap/New Basic Tiles Free.png"
-dest_files=["res://.godot/imported/New Basic Tiles Free.png-fb689cf9249c2a33d6d70431a657bfe6.ctex"]
+source_file="res://Art/Tilemap/DungeonEnv.webp"
+dest_files=["res://.godot/imported/DungeonEnv.webp-151c1baa434c135576de608ac83c4d15.ctex"]
 
 [params]
 

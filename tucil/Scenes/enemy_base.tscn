@@ -523,7 +523,6 @@ radius = 20.435875
 
 [node name="Enemy_base" type="CharacterBody2D" unique_id=391764609 node_paths=PackedStringArray("sight", "attack_range", "anim_tree", "health", "hitbox", "hitbox_pivot", "hurtbox")]
 position = Vector2(59, 41)
-scale = Vector2(4, 4)
 script = ExtResource("1_cs1oe")
 sight = NodePath("Sight")
 attack_range = NodePath("Hitbox_pivot/Hitbox")

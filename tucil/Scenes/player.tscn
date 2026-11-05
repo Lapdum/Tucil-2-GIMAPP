@@ -799,8 +799,9 @@ size = Vector2(20, 26.800003)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2coc"]
 
 [node name="Player" type="CharacterBody2D" unique_id=855570928 node_paths=PackedStringArray("anim_tree", "health", "hitbox", "hitbox_pivot", "hurtbox")]
+y_sort_enabled = true
 position = Vector2(174, 78)
-scale = Vector2(4, 4)
+collision_mask = 2
 script = ExtResource("1_cvnsp")
 sword_slash = ExtResource("3_6t5aa")
 speed = 300.0
@@ -835,7 +836,6 @@ parameters/Idling/blend_position = Vector2(0, 0)
 parameters/Walking/blend_position = Vector2(0.4131627, 0.013636351)
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="." unique_id=602805949]
-bus = &"SFX"
 
 [node name="Hitbox_pivot" type="Node2D" parent="." unique_id=1961747702]
 
@@ -851,6 +851,8 @@ position = Vector2(0, -3.4000044)
 shape = SubResource("RectangleShape2D_v2coc")
 
 [node name="HealthBar" type="Node2D" parent="." unique_id=369155926]
+z_index = 100
+y_sort_enabled = true
 position = Vector2(-17.25, -31.5)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("6_f1ek2")
