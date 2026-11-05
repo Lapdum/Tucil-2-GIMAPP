@@ -146,3 +146,6 @@ speed = 100.0
 tile_set = SubResource("TileSet_dcuqf")
 rendering_quadrant_size = 32
 format = 2
+layer_0/tile_data = PackedInt32Array(851976, 327680, 0)
+
+[node name="Node" type="Node" parent="." unique_id=1794024327]
